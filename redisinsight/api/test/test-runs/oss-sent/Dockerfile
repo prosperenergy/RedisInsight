@@ -1,3 +1,3 @@
-FROM redis:6.2.6-alpine
+FROM valkey/valkey:8
 COPY redis.conf users.acl /etc/redis/
-ENTRYPOINT [ "redis-server", "/etc/redis/redis.conf" ]
+ENTRYPOINT [ "valkey-server", "/etc/redis/redis.conf" ]
