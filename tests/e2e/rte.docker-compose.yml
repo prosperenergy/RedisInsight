@@ -89,7 +89,7 @@ services:
   # oss standalone v5
   oss-standalone-v5:
     logging: *logging
-    image: redis:5
+    image: valkey/valkey:8
     ports:
       - 8101:6379
     networks:
@@ -174,11 +174,11 @@ services:
 
   oss-sentinel-primary-1:
     logging: *logging
-    image: redis:5
+    image: valkey/valkey:8
 
   oss-sentinel-primary-2:
     logging: *logging
-    image: redis:5
+    image: valkey/valkey:8
 
   # oss cluster (v7)
   cluster-plain-creator-7:
@@ -310,8 +310,8 @@ services:
   # oss cluster with redisgears 2
   gears-cluster-2-0-creator:
     logging: *logging
-    image: redis:latest
-    entrypoint: ['/bin/sh', '-c', 'redis-cli --cluster create 172.31.100.191:6379 172.31.100.192:6379 172.31.100.193:6379 172.31.100.194:6379 172.31.100.195:6379 172.31.100.196:6379 --cluster-replicas 1 --cluster-yes && tail -f /dev/null']
+    image: valkey/valkey:8
+    entrypoint: ['/bin/sh', '-c', 'valkey-cli --cluster create 172.31.100.191:6379 172.31.100.192:6379 172.31.100.193:6379 172.31.100.194:6379 172.31.100.195:6379 172.31.100.196:6379 --cluster-replicas 1 --cluster-yes && tail -f /dev/null']
     depends_on:
       - gears-cluster-2-0-node-1
       - gears-cluster-2-0-node-2

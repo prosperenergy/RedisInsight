@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 redis:7.0.0
+FROM --platform=linux/amd64 valkey/valkey:8
 
 USER root
 

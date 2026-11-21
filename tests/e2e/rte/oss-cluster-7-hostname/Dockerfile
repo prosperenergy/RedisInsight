@@ -1,5 +1,5 @@
-FROM --platform=linux/amd64 redis:7.0.0
+FROM --platform=linux/amd64 valkey/valkey:8
 
 COPY redis.conf /etc/redis/
 
-CMD [ "redis-server", "/etc/redis/redis.conf" ]
+CMD [ "valkey-server", "/etc/redis/redis.conf" ]
